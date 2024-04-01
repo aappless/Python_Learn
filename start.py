@@ -29,7 +29,17 @@ e = etree.HTML(html_txt)
 #  sss = e.xpath('//ARTICLE[@id="article"]')
 # sss = e.xpath('//article')
 # LSJ 註後面要加上/text()，不然會傳會節點的LIST==>[<Element article at 0x20b7adf4240>]
-sss = e.xpath('//*[@id="article"]/text()')
+# sss = e.xpath('//*[@id="article"]/text()')
+# 由於傳回值是列表 使用 '\n'.join() 是指每個元素用一個換行連結起來
+sss = '\n'.join(e.xpath('//*[@id="article"]/text()'))
+# 列表格式 取第一個列表
+titl=e.xpath('//h1/text()')[0]
+print(titl)
 print(sss)
+# 輸出有表示是一個列表
 # print(html)
-
+# 存文字檔  檔名       覆蓋寫入 \n\n 換行
+with open('mytxt.txt', 'w',encoding='utf-8') as f:
+    # Comment:
+    f.write(titl+'\n'+sss+'\n')
+# end overwrite file
