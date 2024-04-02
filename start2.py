@@ -38,6 +38,7 @@ info_list=re.findall('<li><a href="(.*)">(.*)<span></span></a></li>',resp.text)
 print(info_list)
 #  tuple 使用() list 使用[] , tuple 是不能改的。list 是可以改的open('title.txt', 'w',encoding='utf-8')
 f = open('title.txt', 'w',encoding='utf-8')
+
 for info in info_list:
     # comment:
     url=info[0]
@@ -50,5 +51,5 @@ for info in info_list:
 
 # end for
 f.close()
-
+print('數量:',len(info_list))
 # 二個問題，一，會多抓預覽的章節，二抓JS非同步不會有文章(有些網頁)
