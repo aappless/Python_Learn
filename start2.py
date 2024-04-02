@@ -8,8 +8,8 @@
 # 三、findall 可找出全部，返回LIST
 # 字符 .除了換行以外所有的字
 #      ^開頭 就是NOT 的意思，[^0-9]==>非數字 ，
-#      內定符號 \d 表示[0-9], \D => [^0-9] 
-#      \w 任意字母，數字。\W 非任意字母及數字 
+#      內定符號 \d 表示[0-9], \D => [^0-9]
+#      \w 任意字母，數字。\W 非任意字母及數字
 #      \s 空格 ,\S 非空格
 #       yes|no ==>yes OR NO
 #       ? 是出0次或1前都可以
@@ -18,12 +18,12 @@
 #      +
 #      # ?
 #      []
-# 
+#
 import re
-# pip install requests 
+# pip install requests
 import requests
 # pip install lxml
-from lxml import etree 
+from lxml import etree
 #  A[@href='/zh_hant/book/68288/32062481.html']
 # 以下是取得目錄
 url= 'https://m.bqg9527.net/zh_hant/book/68288/'
@@ -33,12 +33,13 @@ resp.encoding='utf-8'
 #print(resp.text)
 # xpath 不會顯示全部 (影片上的範例說的)
 # 取得目錄 使用正則，抓出符合規則的文字 <a href="/zh_hant/book/68288/32064907.html">
-info_list=re.findall('<li><a href="(.*?)">(.*?)<span></span></a></li>',resp.text)
+# .* 代表除了換行字元之外所有的字元
+info_list=re.findall('<li><a href="(.*)">(.*)<span></span></a></li>',resp.text)
 print(info_list)
 #  tuple 使用() list 使用[] , tuple 是不能改的。list 是可以改的open('title.txt', 'w',encoding='utf-8')
-f = open('title.txt', 'w',encoding='utf-8') 
+f = open('title.txt', 'w',encoding='utf-8')
 for info in info_list:
-    # comment: 
+    # comment:
     url=info[0]
     title=info[1]
     print(url,title)
@@ -46,6 +47,8 @@ for info in info_list:
    # with open('title.txt', 'w',encoding='utf-8') as f:
     #    f.write(title+' '+url+'\n')
     # Comment:
-    
+
 # end for
 f.close()
+
+# 二個問題，一，會多抓預覽的章節，二抓JS非同步不會有文章(有些網頁)
