@@ -20,12 +20,31 @@ tree = etree.HTML(html_txt)
 # print(urls)
 # print(texts)
 # 先將章節裏的東西用xpath 抓出來
+# 取第一元素
+# bookname=tree.xpath("//div[@class='block_txt2']/h2/*/text()")[0]
+bookname=''.join(tree.xpath("//div[@class='block_txt2']/h2/*/text()"))
+print(bookname)
+author=''.join(tree.xpath("//div[@class='block_txt2']/p[1]/*/text()"))
+print(author)
+# -----------------
+# 建目錄
+import os
+print(os.getcwdb())
+dir = os.getcwd() + "\\" + bookname + "_" + author
+print(dir)
+if not os.path.exists(dir):
+    os.mkdir(dir)
+
+
+# quit() #中斷可用 quit(), exit()
+
+
 # 這有二段要排除第一段的 直接指定第2 段這個可用
 # chapter_elements = tree.xpath("//ul[@class='chapter'][2]/*")
 # 直接排除
 chapter_elements = tree.xpath("//ul[@class='chapter' and not(@id='last12')]/*")
 
-print(chapter_elements)
+# print(chapter_elements)
 #將各元素轉成XML
 new_html = ""
 for element in chapter_elements:
@@ -41,20 +60,35 @@ info_list=re.findall('<li><a href="(.*)">(.*)<span></span></a></li>',new_html)
 #print(info_list)
 #  tuple 使用() list 使用[] , tuple 是不能改的。list 是可以改的open('title.txt', 'w',encoding='utf-8')
 #f = open('title_N.txt', 'w',encoding='utf-8')
-
+i =0
 for info in info_list:
-    # comment:
-    urlx='https://m.bqg9527.net'+info[0]
-    titlex=info[1]
+    i += 1
+    urlx ='https://m.bqg9527.net'+info[0]
+    titlex = info[1]
+    fn = str(i).zfill(4) +'_'+ info[1]+'.txt'
     print(urlx,titlex)
-    #f.write(title+' '+url+'\n')
+    # f.write(title+' '+url+'\n')
     # 取得內容
     resp=requests.get(urlx,headers=headers)
     resp.encoding='utf-8'
+    #print(resp.text)
     html_data = etree.HTML(resp.text)
-    #TXT_LIST =html_data.xpath()
-    print(html_data) #這會是一堆元素因為是格式 要用XPATH 解
-    
+    #print(html_data)
+    # div 一定要小寫
+    #txt_list =html_data.xpath('//div[@id="nr1" and not(@id="aswift_1_host")]/text()')
+    #print(txt_list)
+    chapter=''.join(html_data.xpath("//div[@id='nr_title']/text()"))
+    chapter='    '+chapter.lstrip()
+    print(chapter)
+    txt_list =''.join(html_data.xpath('//div[@id="nr1"]/text()'))
+    print(txt_list)
+    #quit()
+    with open(dir+'\\'+fn, 'w',encoding='utf-8') as f:
+        f.write(chapter+'\n'+txt_list+'\n')
+
+    quit()
+    # print(html_data) #這會是一堆元素因為是格式 要用XPATH 解
+
 # end for
 #f.close()
 print('數量:',len(info_list))
