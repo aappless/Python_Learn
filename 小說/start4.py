@@ -81,12 +81,15 @@ for info in info_list:
     chapter='    '+chapter.lstrip()
     print(chapter)
     txt_list =''.join(html_data.xpath('//div[@id="nr1"]/text()'))
+    #文字取代有幾種方式，正則也可以
+    txt_list=txt_list.replace('“','「')
+    txt_list=txt_list.replace('”','」')
     print(txt_list)
     #quit()
     with open(dir+'\\'+fn, 'w',encoding='utf-8') as f:
         f.write(chapter+'\n'+txt_list+'\n')
 
-    quit()
+    # quit()
     # print(html_data) #這會是一堆元素因為是格式 要用XPATH 解
 
 # end for
