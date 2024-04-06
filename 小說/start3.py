@@ -36,7 +36,7 @@ for element in chapter_elements:
 #result = [(url, text) for url, text in zip(urls, texts)]
 
 #print(result)
-# .* 代表除了換行字元之外所有的字元
+# .* 代表除了換行字元之外所有的字元 將二個()裏的東西 存入成一組 LIST(元組)，也就是每個LIST有二個東西，
 info_list=re.findall('<li><a href="(.*)">(.*)<span></span></a></li>',new_html)
 print(info_list)
 #  tuple 使用() list 使用[] , tuple 是不能改的。list 是可以改的open('title.txt', 'w',encoding='utf-8')
