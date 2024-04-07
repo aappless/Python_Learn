@@ -1,3 +1,4 @@
+# 第二個練習
 # 使用Flask框架 按下CTRL+~ 出現TERMINAL
 # pip install flask 注意要在(.venv)下
 from flask import Flask
