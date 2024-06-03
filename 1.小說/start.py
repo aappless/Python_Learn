@@ -1,5 +1,5 @@
 # 第一步 發送請求
-# 安裝送網路請求的套件 CTRL+'
+# 安裝送網路請求的套件 CTRL+'  <~
 # pip install requests
 
 import requests
