@@ -1,8 +1,32 @@
 # 安裝套件 CTRL+~
 # pip install pymongo
+
+# ====讀取 INI==========================
+print('INI READE')
+import configparser
+import os
+current_directory = os.path.dirname(os.path.abspath(__file__))
+config_path = os.path.join(current_directory, 'config.ini') #字串相加
+
+config = configparser.ConfigParser()
+# config.read('config.ini', encoding='utf-8')
+config.read(config_path, encoding='utf-8')
+# config.read('config.ini')
+eform=''
+try:
+    eform=config['SYSTEM']['EFORM_SERVER']
+except:
+    print('發生錯誤')
+
+print(eform)
+print('INI READE END')
+
+if eform=='':
+   eform="mongodb://localhost:27017/"
+
 # from pymongo import MongoClient 這二個指令皆可
 import pymongo
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+myclient = pymongo.MongoClient(eform)
 # 先定一個不存在的資料庫
 mydb=myclient["book"]
 # 然後在資料庫中加資料 就會新增這個資料庫 及資料
@@ -48,17 +72,3 @@ print(len(mylist))
 print(mylist)
 # {$gte:ISODate(“2020-03-01”),$lt:ISODate(“2021-03-31”)}}
 
-# ====讀取 INI==========================
-print('INI READE')
-import configparser
-config = configparser.ConfigParser()
-# config.read('config.ini', encoding='utf-8')
-config.read('config.ini')
-eform=''
-try:
-    eform=config['SYSTEM']['EFORM_SERVER']
-except:
-    print('發生錯誤')
-
-print(eform)
-print('INI READE END')
