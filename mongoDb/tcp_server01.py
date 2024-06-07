@@ -2,6 +2,7 @@ import socket
 import signal
 import sys
 import time
+import getdata as gg
 # 使用 signal 模塊來設置信號處理器，捕獲 SIGINT 和 SIGTERM 信號，並在捕獲到信號時執
 # 使用鍵盤中斷：
 # 最簡單的方法是使用鍵盤中斷（例如 Ctrl + C）來停止服務器。這會引發一個 KeyboardInterrupt，你可以捕獲這個異常來進行清理工作。
@@ -66,8 +67,11 @@ try:
             elif key == 'NAME':
                 sent = sock.sendto(b'I am HelloKitty', address)
             elif key == 'GETDATA':
-                sent = sock.sendto(b'chrno', address)
-
+                sent = sock.sendto(b'GG...', address)
+                num=gg.getdata('HELLO')
+                print(num)
+                sock.sendto(bytes(str(num), 'utf-8'), address)
+                sent = sock.sendto(b'num', address)
 
             # key=str(data)
             # print(key)
