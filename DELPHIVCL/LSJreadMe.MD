@@ -27,3 +27,36 @@ pip install delphivcl 可以安裝了
 'MainMenu', 'MediaPlayer', 'Memo', 'MemoryStream', 'Menu', 'MenuItem', 'Metafile', 'Monitor', 'Notebook', 'NumberBox', 'Object', 'OpenDialog', 'Page', 'PageControl', 'PaintBox', 'Panel', 'PascalInterface', 'PascalRecord', 'Persistent', 'Picture', 'Point', 'PopupMenu', 'PrototypeBindSource', 'RadioButton', 'RadioGroup', 'Rect', 'ResourceStream', 'SaveDialog', 'Screen', 'ScrollBar', 'SetHighDpiAware', 'SetProcessDpiAwareness', 'Shape', 'ShowMessage', 'Size', 'SpeedButton', 'SpinButton', 'SpinEdit', 'Splitter', 'StaticText',
 'StatusBar', 'Stream', 'StringGrid', 'StringStream', 'Strings', 'StyleInfo', 'StyleManager', 'StyleServices', 'TabControl', 'TabSheet', 'Timer', 'ToggleSwitch', 'ToolBar', 'ToolButton', 'TrackBar', 'TreeNode', 'TreeView', 'VarParameter', 'WinControl', '__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'bkAbort', 'bkAll', 'bkCancel', 'bkClose', 'bkCustom', 'bkHelp', 'bkIgnore', 'bkNo', 'bkOK', 'bkRetry', 'bkYes', 'caFree', 'caHide', 'caMinimize', 'caNone', 'cl3DDkShadow', 'cl3DLight', 'clActiveBorder', 'clActiveCaption', 'clAppWorkSpace', 'clAqua', 'clBackground', 'clBlack', 'clBlue', 'clBtnFace', 'clBtnHighlight', 'clBtnShadow', 'clBtnText', 'clCaptionText', 'clCream', 'clDefault', 'clDkGray', 'clFuchsia', 'clGradientActiveCaption', 'clGradientInactiveCaption', 'clGray', 'clGrayText', 'clGreen', 'clHighlight', 'clHighlightText', 'clHotLight', 'clInactiveBorder', 'clInactiveCaption', 'clInactiveCaptionText', 'clInfoBk', 'clInfoText', 'clLime', 'clLtGray', 'clMaroon', 'clMedGray', 'clMenu', 'clMenuBar', 'clMenuHighlight', 'clMenuText', 'clMoneyGreen', 'clNavy', 'clNone', 'clOlive', 'clPurple', 'clRed', 'clScrollBar', 'clSilver', 'clSkyBlue', 'clTeal', 'clWhite', 'clWindow', 'clWindowFrame', 'clWindowText', 'clYellow', 'crAppStart', 'crArrow', 'crCross',
 'crDefault', 'crDrag', 'crHSplit', 'crHandPoint', 'crHelp', 'crHourGlass', 'crIBeam', 'crMultiDrag', 'crNo', 'crNoDrop', 'crNone', 'crSQLWait', 'crSize', 'crSizeAll', 'crSizeNEead', 'fmOpenReadWrite', 'fmOpenWrite', 'fmShareCompat', 'fmShareDenyNone', 'fmShareDenyRead', 'fmShareDenyWrite', 'fmShareExclusive', 'fsBorder', 'fsSurface', 'gdFixed', 'gdFocused', 'gdSelected', 'mdNearest', 'mdNull', 'mdPrimary', 'mrAbort', 'mrAll', 'mrCancel', 'mrIgnore', 'mrNo', 'mrNoToAll', 'mrNone', 'mrOk', 'mrRetry', 'mrYes', 'mrYesToAll', 'ssAlt', 'ssCtrl', 'ssDouble', 'ssLeft', 'ssMiddle', 'ssRight', 'ssShift']
+---------------------------------------------------------------------------------------
+使用PyScripter時，目前是不支援 虛擬環境
+https://github.com/Embarcadero/DelphiVCL4Python
+所以要裝到PYTHON 裏
+pip install delphivcl
+---------------------------------------------------------------------------------------
+從 Python 使用 Delphi 表單
+在 Delphi 中建立表單並匯出該表單以在 Python 中使用
+Delphi4PythonExporter
+
+從 Delphi IDE 的 GetIt 套件管理器安裝 Delphi4PythonExporter。
+Tools->GetIt Package Manager->右上角找Delphi4Python
+DELPHI安裝完後要重開DELPHI
+在TOOLS的最下的就會出現EXPORT TO PYTHON
+
+https://github.com/Embarcadero/Delphi4PythonExporter
+
+抓下來後
+開啟DelphiVCL4Python\samples\DesignExport\SampleForm專案
+
+
+因為使用  delphifmx
+所以 要再安裝 pip install delphifmx
+
+檢查是否有安裝
+您可以使用指令檢查DelphiVCL和DelphiFMX的可用控制項
+> python
+>>> from delphivcl import *
+>>> dir()
+> python
+>>> from delphifmx import *
+>>> dir()
+CTRL+Z 離開

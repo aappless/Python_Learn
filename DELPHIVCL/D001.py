@@ -1,4 +1,8 @@
+
+# https://github.com/Embarcadero/DelphiVCL4Python/blob/main/samples/HelloWorld/hellodelphivcl.py
 from delphivcl import *
+
+
 class MainForm(Form):
     def __init__(self, owner):
         self.Caption = "A VCL Form.."
@@ -16,6 +20,9 @@ def main():
     Application.Initialize()
     Application.Title = "Hello Python"
     Main=MainForm(Application)
+
+
+
     Main.Show()
     FreeConsole()
     Application.Run()
