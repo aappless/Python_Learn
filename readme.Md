@@ -1,5 +1,5 @@
-#1.選擇目錄
-#2.使用虛擬環境CTRL+SHIFT+P
+1.選擇目錄
+---2.使用虛擬環境CTRL+SHIFT+P
 #3.python.createEnvironment
 #4.選 .VENV
 5.選版本(安裝在自已電腦裏的，各版本看要用那一版) 等一會，會在此目錄下建立.VENV 的資料夾
